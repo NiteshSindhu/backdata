@@ -10,6 +10,9 @@ app.use(cors({origin:"*"}))
 
 // for user
 app.use("/user", userRoutes);
+app.get("/", (req,res) => {
+  res.send("Welcome");
+})
 app.listen(port, async () => {
   try {
     await connection;
