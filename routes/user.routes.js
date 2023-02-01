@@ -19,9 +19,9 @@ userRoutes.post("/register", async (req, res) => {
   }
 });
 userRoutes.post("/login", async (req, res) => {
-    let data = req.body;
+    let {email,password} = req.body;
     try {
-        const userdata = await UserModal.find({ email: data.email });
+        const userdata = await UserModal.find({ email,password });
         if (userdata.length === 0) {
           res.send({error:"not register",islogin:false})
         } else {
