@@ -8,14 +8,14 @@ userRoutes.post("/register", async (req, res) => {
     const userdata = await UserModal.find({ email: data.email });
     try {
         if (userdata.length > 0) {
-          res.send({error:"already",isregister:false})
+          res.send({"error":"already","isregister":false})
         } else {
             const user = new UserModal(data);
             await user.save();
-            res.send({ status: "successfull", isregister: true });
+            res.send({ "status": "successfull", "isregister": true });
         }
     } catch (err) {
-        res.send({Error:err})
+        res.send({"Error":err})
   }
 });
 userRoutes.post("/login", async (req, res) => {
@@ -23,13 +23,13 @@ userRoutes.post("/login", async (req, res) => {
     try {
         const userdata = await UserModal.find({ email,password });
         if (userdata.length === 0) {
-          res.send({error:"not register",islogin:false})
+          res.send({"error":"not register",islogin:false})
         } else {
           
-            res.send({ status: "successfull", islogin: true ,user:userdata});
+            res.send({ "status": "successfull", "islogin": true ,"user":userdata});
         }
     } catch (err) {
-        res.send({Error:err})
+        res.send({"Error":err})
   }
 });
 
