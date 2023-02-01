@@ -23,7 +23,7 @@ userRoutes.post("/login", async (req, res) => {
     try {
         const userdata = await UserModal.find({ email,password });
         if (userdata.length === 0) {
-          res.send({"error":"not register",islogin:false})
+          res.send({"error":"not register","islogin":false})
         } else {
           
             res.send({ "status": "successfull", "islogin": true ,"user":userdata});
